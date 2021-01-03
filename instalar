@@ -7,10 +7,9 @@ yum install yum-utils
 
 yum-config-manager --enable remi-php72
 
-yum -y install \
-httpd telnet nano gcc openssl-devel pkgconfig make wget sudo\
-php \
-php-fpm php-devel php-pdo php-pear php-mbstring php-cli php-odbc php-imap php-gd php-xml php-soap php-mcrypt php-mysqlnd php-pecl-imagick;
+yum -y install httpd telnet nano gcc openssl-devel pkgconfig make wget sudo
+yum -y install php
+yum -y install php-fpm php-devel php-pdo php-pear php-mbstring php-cli php-odbc php-imap php-gd php-xml php-soap php-mcrypt php-mysqlnd php-pecl-imagick
 
 pecl install mongodb
 
@@ -55,8 +54,13 @@ gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc
 
 sudo yum install -y mongodb-org
 
-sudo yum install -y mongodb-org-4.4.2 mongodb-org-server-4.4.2 mongodb-org-shell-4.4.2 mongodb-org-mongos-4.4.2 mongodb-org-tools-4.4.2
+***************************************
 
-exit
+httpd.conf {
+  Options Indexes FollowSymLinks Multiviews
+  MultiviewsMatch Any
+  AllowOverride All
+}
 
-docker run -p 80:80 -p 27017:27017 -p 10000:10000 -v C:\Users\Koala\Sites:/var/www/html/ --restart always --name apache -it koalaopressor:apache80
+docker run -p 80:80 -p 10000:10000 -v C:\Users\Koala\Sites:/var/www/html/ --restart always --name php -it centos:7
+docker run -p 27017:27017 -v C:\Users\Koala\Sites:/var/www/html/ --restart always --name mongodb -it centos:7
