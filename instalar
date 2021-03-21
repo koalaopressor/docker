@@ -1,9 +1,9 @@
 Install Apache e php:
 
-yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
-yum install yum-utils
+yum install -y yum-utils
 
 yum-config-manager --enable remi-php72
 
@@ -35,7 +35,7 @@ sudo yum install webmin
 /etc/webmin/stop
 /etc/webmin/start
 
-/usr/libexec/webmin/changepass.pl /etc/webmin root NEWPASSWORD 
+/usr/libexec/webmin/changepass.pl /etc/webmin root NEWPASSWORD
 
 https://localhost:10000
 
@@ -62,5 +62,21 @@ httpd.conf {
   AllowOverride All
 }
 
+***************************************
+
+Win:
+
 docker run -p 80:80 -p 10000:10000 -v C:\Users\Koala\Sites:/var/www/html/ --restart always --name php -it centos:7
 docker run -p 27017:27017 -v C:\Users\Koala\Sites:/var/www/html/ --restart always --name mongodb -it centos:7
+
+***************************************
+
+Mac:
+
+docker run -p 80:80 -p 10000:10000 -v ~/Sites:/var/www/html/ --restart always --name php -it centos:7
+docker run -p 27017:27017 -v ~/Sites:/var/www/html/ --restart always --name mongodb -it centos:7
+
+***************************************
+
+Se for um mac m1 sempre instalar com os hash da arquitetura x86_64 pois o remi-php nao tem RPM para Arm64 para pegar o hash da imagem use o comando : docker manifest inspect 'nome da imagem'.
+para subir o container usando a imagem baixada com hash use o nomeDaImg:verção@sha256:numeroDoHash
