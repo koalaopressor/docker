@@ -1,4 +1,4 @@
-<h1>Install Apache e php:</h1>
+Install Apache e php:
 
 yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
@@ -80,5 +80,7 @@ docker run -p 27017:27017 -v ~/Sites:/var/www/html/ --restart always --name mong
 
 ***************************************
 
-Se for um mac m1 sempre instalar com os hash da arquitetura x86_64 pois o remi-php nao tem RPM para Arm64 para pegar o hash da imagem use o comando : docker manifest inspect 'nome da imagem'.
+Se for um mac m1 sempre instalar com os hash da arquitetura x86_64 pois o remi-php nao tem RPM para Arm64 para
+pegar o hash da imagem use o comando : docker manifest inspect 'nome da imagem'.
+
 para subir o container usando a imagem baixada com hash use o nomeDaImg:verção@sha256:numeroDoHash
