@@ -11,6 +11,8 @@ yum -y install httpd telnet nano gcc openssl-devel pkgconfig make wget sudo
 yum -y install php
 yum -y install php-fpm php-devel php-pdo php-pear php-mbstring php-cli php-odbc php-imap php-gd php-xml php-soap php-mcrypt php-mysqlnd php-pecl-imagick
 
+
+pecl channel-update pecl.php.net
 pecl install mongodb
 
 echo "extension=mongodb.so" >> /etc/php.ini
@@ -30,7 +32,7 @@ enabled=1
 wget http://www.webmin.com/jcameron-key.asc
 sudo rpm --import jcameron-key.asc
 
-sudo yum install webmin
+sudo yum install -y webmin
 
 /etc/webmin/stop
 /etc/webmin/start
